@@ -1,0 +1,53 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+abstract class Liqour {
+	-description: String
+	+getDescription(): String
+	+abstract calories(): int
+}
+
+abstract class LiqourDecorator extends Liqour {
+	-liqour: Liqour
+	+abstract getDescription(): String
+}
+
+class Bourbon extends Liqour {
+	+calories(): int
+}
+class Vodka extends Liqour {
+	+calories(): int
+}
+class Gin extends Liqour {
+	+calories(): int
+}
+
+class Bitters extends LiqourDecorator {
+	+getDescription(): String
+	+calories(): int
+}
+class Vermouth extends LiqourDecorator {
+	+getDescription(): String
+	+calories(): int
+}
+class Cherry extends LiqourDecorator {
+	+getDescription(): String
+	+calories(): int
+}
+class Lime extends LiqourDecorator {
+	+getDescription(): String
+	+calories(): int
+}
+class Sugar extends LiqourDecorator {
+	+getDescription(): String
+	+calories(): int
+}
+class LimeJuice extends LiqourDecorator {
+	+getDescription(): String
+	+calories(): int
+}
+
+LiqourDecorator *-- Liqour
+
+hide circle
+@enduml
