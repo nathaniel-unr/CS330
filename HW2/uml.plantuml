@@ -1,0 +1,78 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+abstract class Tree {
+	#description: String
+	+getDescription(): String
+	+abstract price(): float
+	+getDecorator<T>(Class<T>): T
+}
+
+class FraserFir extends Tree {
+	+price(): float
+}
+
+class DouglasFir extends Tree {
+	+price(): float
+}
+
+class BalsamFir extends Tree {
+	+price(): float
+}
+
+class ColoradoBlueSpruce extends Tree {
+	+price(): float
+}
+
+abstract class TreeDecorator extends Tree {
+	#tree: Tree
+	+getDescription(): String
+	+getDecorator<T>(Class<T>): T
+}
+
+class Star extends TreeDecorator {
+	-hasStar: boolean
+	+getDescription(): String
+	+price(): float
+}
+
+class Ruffles extends TreeDecorator {
+	+getDescription(): String
+	+price(): float
+}
+
+class BallsRed extends TreeDecorator {
+	+getDescription(): String
+	+price(): float
+}
+
+class BallsBlue extends TreeDecorator {
+	+getDescription(): String
+	+price(): float
+}
+
+class BallsSilver extends TreeDecorator {
+	+getDescription(): String
+	+price(): float
+}
+
+class Ribbons extends TreeDecorator {
+	+getDescription(): String
+	+price(): float
+}
+
+class Lights extends TreeDecorator {
+	+getDescription(): String
+	+price(): float
+}
+
+class Leds extends TreeDecorator {
+	+getDescription(): String
+	+price(): float
+}
+
+TreeDecorator *-- Tree
+
+hide circle
+
+@enduml
