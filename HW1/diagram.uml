@@ -1,0 +1,44 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+abstract class Shop {
+    #paymentBehavior: PaymentBehavior
+    #orderBehavior: OrderBehavior
+    
+    +takePayment(): void
+    +takeOrder(): void
+    +setPaymentBehavior(paymentBehavior: PaymentBehavior): void
+    +setOrderBehavior(orderBehavior: OrderBehavior): void
+}
+
+class Kiosk extends Shop {}
+class Store extends Shop {}
+
+interface "<<PaymentBehavior>>" as PaymentBehavior {
+    +takePayment(): void
+}
+
+interface "<<OrderBehavior>>" as OrderBehavior {
+    +takeOrder(): void
+}
+
+class CashPaymentBehavior implements PaymentBehavior {
+    +takePayment(): void
+}
+class CreditCardPaymentBehavior implements PaymentBehavior {
+    +takePayment(): void
+}
+
+class TicketOrderBehavior implements OrderBehavior {
+    +takeOrder(): void
+}
+class ComputerOrderBehavior implements OrderBehavior {
+    +takeOrder(): void
+}
+
+Shop *-- PaymentBehavior
+Shop *-- OrderBehavior
+
+hide circle
+
+@enduml
