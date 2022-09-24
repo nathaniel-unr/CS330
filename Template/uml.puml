@@ -1,0 +1,8 @@
+@startuml
+'This removes the icons for class members and methods
+skinparam classAttributeIconSize 0
+
+
+'This removes the icons for classes and interfaces
+hide circle
+@enduml
