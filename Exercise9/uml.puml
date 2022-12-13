@@ -1,0 +1,41 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface GuitarController {
+  +PressFretButton(button: colors): void
+  +PressPick(): void
+  +PressTremelo(): void
+}
+
+interface DanceController {
+  +Step(direction dir): void
+}
+
+class GuitarHeroGuitarController implements GuitarController {
+  +PressFretButton(GuitarController.colors button): void
+  +PressPick(): void
+  +PressTremelo(): void
+}
+
+class GuitarHeroDanceController implements DanceController {
+  +Step(dir: direction): void
+}
+
+
+class ControllerAdapter implements GuitarController, DanceController {
+  -guitar: GuitarHeroGuitarController
+  -dance: GuitarHeroDanceController
+  -danceBuffer: direction
+  +PressFretButton(button: colors): void
+  +PressPick(): void
+  +PressTremelo(): void
+  +Step(dir: direction): void
+  {static} -mapDirectionToColors(dir: direction): colors
+  {static} -mapColorsToDirection(button: colors): direction
+}
+
+ControllerAdapter --* GuitarHeroGuitarController
+ControllerAdapter --* GuitarHeroDanceController
+
+hide circle
+@enduml

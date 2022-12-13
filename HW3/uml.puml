@@ -1,0 +1,37 @@
+@startuml
+'This removes the icons for class members and methods
+skinparam classAttributeIconSize 0
+
+interface OrderSlip as "<<OrderSlip>>" {
+  +orderUp(cook: ShortOrderCook): void
+}
+
+
+class BurgerOrderSlip implements OrderSlip {
+  +orderUp(cook: ShortOrderCook): void
+}
+
+class Customer {
+  +createOrder(): OrderSlip
+}
+
+class ShortOrderCook {
+  +makeBurger(): void
+}
+
+class Waitress {
+  -orders: ArrayList<OrderSlip>
+  -cook: ShortOrderCook
+
+ +takeOrder(order: OrderSlip): void
+ +returnToCounter(): void
+}
+
+OrderSlip --* Waitress
+ShortOrderCook --* BurgerOrderSlip
+ShortOrderCook --* Waitress
+OrderSlip --* Customer
+
+'This removes the icons for classes and interfaces
+hide circle
+@enduml
