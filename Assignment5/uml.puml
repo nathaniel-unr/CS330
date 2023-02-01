@@ -1,0 +1,52 @@
+@startuml
+'This removes the icons for class members and methods
+skinparam classAttributeIconSize 0
+
+abstract class slotFactory {}
+
+class jerseyFactory extends slotFactory {}
+class nevadaFactory extends slotFactory {}
+class washingtonFactory extends slotFactory {}
+
+abstract class SlotMachine {
+	-name: String
+	-cabinetSize: String
+	-displaySize: String
+	-paymentType: String
+	-CPU: String
+	-OS: String
+	
+	+prepare(): void
+	+getName(): String
+}
+
+class jerseyStraightSlotMachine extends slotMachine {}
+class NewJerseyStyleBonusSlotMachine extends SlotMachine {}
+class NewJerseyStyleProgressiveSlotMachine extends SlotMachine {}
+
+class NevadaStyleStraightSlotMachine extends SlotMachine {}
+class NevadaStyleBonusSlotMachine extends SlotMachine {}
+class NevadaStyleProgressiveSlotMachine extends SlotMachine {}
+
+class WashingtonStyleStraightSlotMachine extends SlotMachine {}
+class WashingtonStyleBonusSlotMachine extends SlotMachine {}
+class WashingtonStyleProgressiveSlotMachine extends SlotMachine {}
+
+
+'Store *-- SlotMachineFactory
+
+NewJerseyStore *-- StraightSlotMachineFactory
+NewJerseyStore *-- BonusSlotMachineFactory
+NewJerseyStore *-- ProgressiveSlotMachineFactory
+
+NevadaStore *-- StraightSlotMachineFactory
+NevadaStore *-- BonusSlotMachineFactory
+NevadaStore *-- ProgressiveSlotMachineFactory
+
+WashingtonStore *-- StraightSlotMachineFactory
+WashingtonStore *-- BonusSlotMachineFactory
+WashingtonStore *-- ProgressiveSlotMachineFactory
+
+'This removes the icons for classes and interfaces
+hide circle
+@enduml
